@@ -1,0 +1,2132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cheri's Beauty Salon - Where Beauty Meets Elegance</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fffcf9;
+            color: #2d2a2a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInLeft {
+            0% { opacity: 0; transform: translateX(-50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInRight {
+            0% { opacity: 0; transform: translateX(50px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* ===== TAX BANNER ===== */
+        .tax-banner {
+            background: #3d2b2a;
+            color: #fae3df;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 100;
+        }
+        .tax-banner i { color: #e8b4b0; margin-right: 6px; }
+        .tax-banner strong { color: #ffffff; }
+
+        /* ===== HEADER ===== */
+        header {
+            background: rgba(255, 252, 249, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            backdrop-filter: blur(10px);
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #3d2b2a;
+            letter-spacing: 1px;
+        }
+        .logo span { color: #c27a74; }
+        .logo small {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: #8a7270;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        nav ul { display: flex; gap: 28px; list-style: none; }
+        nav ul li a {
+            text-decoration: none;
+            color: #5a4442;
+            font-weight: 500;
+            font-size: 0.92rem;
+            transition: color 0.3s;
+            position: relative;
+            padding: 6px 0;
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #c27a74;
+            transition: width 0.3s;
+        }
+        nav ul li a:hover { color: #c27a74; }
+        nav ul li a:hover::after { width: 100%; }
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        .header-actions a {
+            color: #5a4442;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        .header-actions a:hover { color: #c27a74; }
+
+        #cartIcon { position: relative; }
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: #c27a74;
+            color: #fff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4px;
+            border: 2px solid #fffcf9;
+        }
+        .cart-badge.show { display: flex; }
+
+        .btn-header-book {
+            background: #c27a74;
+            color: #fff !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .btn-header-book:hover { background: #a85f59; transform: translateY(-2px); }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: #3d2b2a;
+            cursor: pointer;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #fceaea 0%, #f7e0df 50%, #fffcf9 100%);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .hero-text .tagline {
+            display: inline-block;
+            background: rgba(194, 122, 116, 0.15);
+            color: #a85f59;
+            padding: 6px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+            color: #3d2b2a;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .hero-text h1 span { color: #c27a74; font-style: italic; }
+        .hero-text p {
+            color: #6b4e4c;
+            font-size: 1.05rem;
+            max-width: 520px;
+            margin-bottom: 28px;
+        }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+        .btn-primary {
+            background: #c27a74;
+            color: #fff;
+            padding: 14px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 24px rgba(194, 122, 116, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: #a85f59;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(194, 122, 116, 0.4);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: #3d2b2a;
+            padding: 14px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid #c27a74;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+        .btn-secondary:hover { background: #c27a74; color: #fff; transform: translateY(-3px); }
+
+        .hero-image { position: relative; }
+        .hero-image img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(61, 43, 42, 0.2);
+        }
+        .hero-image .floating-badge {
+            position: absolute;
+            bottom: 30px;
+            left: -20px;
+            background: #fff;
+            padding: 16px 24px;
+            border-radius: 20px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: float 3s ease-in-out infinite;
+        }
+        .hero-image .floating-badge i { font-size: 2rem; color: #c27a74; }
+        .hero-image .floating-badge h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #3d2b2a;
+        }
+        .hero-image .floating-badge p { font-size: 0.8rem; color: #8a7270; }
+
+        /* ===== STATS ===== */
+        .stats-bar { background: #3d2b2a; color: #fff; padding: 30px 0; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            color: #e8b4b0;
+        }
+        .stat-item p {
+            font-size: 0.85rem;
+            color: #d4b3b0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ===== SECTION TITLE ===== */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            text-align: center;
+            color: #3d2b2a;
+            margin-bottom: 10px;
+        }
+        .section-title span { color: #c27a74; font-style: italic; }
+        .section-sub {
+            text-align: center;
+            color: #8a7270;
+            margin-bottom: 50px;
+            font-size: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== SERVICES ===== */
+        .services-section { padding: 80px 0; background: #fffcf9; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 30px 24px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f5e5e3;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #c27a74, #e8b4b0);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(194, 122, 116, 0.18);
+            border-color: #c27a74;
+        }
+        .service-card .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #fceaea, #f7e0df);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: #c27a74;
+            margin-bottom: 18px;
+        }
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #3d2b2a;
+            margin-bottom: 16px;
+        }
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #faf0ee;
+            font-size: 0.95rem;
+        }
+        .service-item:last-child { border-bottom: none; }
+        .service-item .item-name { color: #5a4442; }
+        .service-item .item-price {
+            font-weight: 600;
+            color: #a85f59;
+            background: #faf0ee;
+            padding: 3px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery-section { padding: 80px 0; background: #fdf3f1; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(61, 43, 42, 0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+        .gallery-item:hover .overlay { opacity: 1; }
+        .gallery-item .overlay p {
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+        }
+
+        /* ===== SHOP ===== */
+        .shop-section { padding: 80px 0; background: #fffcf9; }
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .filter-tabs button {
+            background: #faf0ee;
+            border: none;
+            padding: 10px 26px;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #5a4442;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .filter-tabs button:hover,
+        .filter-tabs button.active { background: #c27a74; color: #fff; }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 26px;
+        }
+        .product-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #f5e5e3;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(194, 122, 116, 0.18);
+            border-color: #c27a74;
+        }
+        .product-card .product-img {
+            height: 200px;
+            background: linear-gradient(135deg, #fceaea, #f7e0df);
+            overflow: hidden;
+        }
+        .product-card .product-img img { width: 100%; height: 100%; object-fit: cover; }
+        .product-card .product-body {
+            padding: 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-card .product-brand {
+            font-size: 0.7rem;
+            color: #c27a74;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .product-card .product-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #3d2b2a;
+            margin-bottom: 10px;
+            min-height: 44px;
+        }
+        .product-card .product-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #a85f59;
+            margin-bottom: 12px;
+        }
+        .product-card .btn-add-cart {
+            width: 100%;
+            background: #3d2b2a;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .product-card .btn-add-cart:hover { background: #c27a74; }
+
+        /* ===== BOOKING SECTION (REDESIGNED) ===== */
+        .booking-section {
+            padding: 90px 0;
+            background: linear-gradient(135deg, #3d2b2a 0%, #5a4442 100%);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .booking-section::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(194, 122, 116, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .booking-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .booking-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+        .booking-text h2 span { color: #e8b4b0; font-style: italic; }
+        .booking-text > p {
+            color: #d4b3b0;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .booking-features { list-style: none; margin-bottom: 30px; }
+        .booking-features li {
+            padding: 8px 0;
+            color: #e8d4d2;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .booking-features li i { color: #e8b4b0; font-size: 1rem; }
+
+        .booking-contact {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .booking-contact i { font-size: 1.6rem; color: #e8b4b0; }
+        .booking-contact small { display: block; color: #d4b3b0; font-size: 0.8rem; }
+        .booking-contact strong { color: #fff; font-size: 1rem; }
+
+        /* ===== CLEAN BOOKING FORM ===== */
+        .booking-form {
+            background: #fff;
+            border-radius: 28px;
+            padding: 44px 40px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            color: #2d2a2a;
+            position: relative;
+        }
+        .booking-form h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #3d2b2a;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+        .booking-form .form-intro {
+            text-align: center;
+            color: #a89693;
+            font-size: 0.88rem;
+            margin-bottom: 30px;
+        }
+        .booking-form .field { margin-bottom: 18px; }
+        .booking-form label {
+            display: block;
+            font-size: 0.8rem;
+            color: #8a7270;
+            font-weight: 600;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .booking-form label .required { color: #cc3333; }
+
+        .booking-form input,
+        .booking-form select,
+        .booking-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #f0e6e3;
+            border-radius: 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.94rem;
+            transition: all 0.3s ease;
+            background: #fdfbfa;
+            color: #2d2a2a;
+        }
+        .booking-form input::placeholder,
+        .booking-form textarea::placeholder { color: #b8a8a5; }
+        .booking-form input:focus,
+        .booking-form select:focus,
+        .booking-form textarea:focus {
+            outline: none;
+            border-color: #c27a74;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(194, 122, 116, 0.08);
+        }
+        .booking-form select:disabled {
+            background: #f5efed;
+            color: #b8a8a5;
+            cursor: not-allowed;
+        }
+        .booking-form textarea { height: 80px; resize: vertical; }
+        .booking-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .booking-form button[type="submit"] {
+            width: 100%;
+            background: linear-gradient(135deg, #c27a74, #a85f59);
+            color: #fff;
+            border: none;
+            padding: 18px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 12px 30px rgba(194, 122, 116, 0.35);
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+        .booking-form button[type="submit"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(194, 122, 116, 0.45);
+        }
+        .booking-form button[type="submit"]:active { transform: translateY(-1px); }
+
+        .form-message {
+            margin-top: 14px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .form-message.success { color: #2d7a3f; }
+        .form-message.error { color: #cc3333; }
+
+        /* ===== SUMMARY MODAL ===== */
+        .summary-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10001;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            backdrop-filter: blur(6px);
+        }
+        .summary-modal-overlay.open { display: flex; }
+
+        .summary-modal {
+            background: #fff;
+            border-radius: 28px;
+            padding: 40px 36px;
+            max-width: 460px;
+            width: 100%;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes modalIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .summary-modal .success-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #d4f5dc, #a8e6b8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 22px;
+            font-size: 2.8rem;
+            color: #2d7a3f;
+        }
+        .summary-modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            color: #3d2b2a;
+            margin-bottom: 8px;
+        }
+        .summary-modal .summary-sub {
+            color: #8a7270;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        .summary-details {
+            background: #fdf3f1;
+            border-radius: 18px;
+            padding: 22px;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        .summary-details .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 9px 0;
+            font-size: 0.88rem;
+            border-bottom: 1px dashed #f0dedd;
+        }
+        .summary-details .summary-row:last-child { border-bottom: none; }
+        .summary-details .summary-row .label { color: #8a7270; font-weight: 500; }
+        .summary-details .summary-row .value {
+            color: #3d2b2a;
+            font-weight: 600;
+            text-align: right;
+            max-width: 60%;
+        }
+        .summary-details .summary-row .value.highlight { color: #a85f59; }
+
+        .summary-modal .close-modal-btn {
+            background: linear-gradient(135deg, #c27a74, #a85f59);
+            color: #fff;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            width: 100%;
+            box-shadow: 0 8px 24px rgba(194, 122, 116, 0.3);
+        }
+        .summary-modal .close-modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(194, 122, 116, 0.4);
+        }
+
+        /* ===== ABOUT ===== */
+        .about-section { padding: 80px 0; background: #fffcf9; }
+        .about-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .about-images img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+        }
+        .about-images img:nth-child(1) { margin-top: 30px; }
+        .about-images img:nth-child(4) { margin-top: 30px; }
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            color: #3d2b2a;
+            margin-bottom: 16px;
+        }
+        .about-text h2 span { color: #c27a74; font-style: italic; }
+        .about-text p { color: #6b4e4c; margin-bottom: 16px; font-size: 1rem; }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials-section { padding: 80px 0; background: #fdf3f1; }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 26px;
+        }
+        .testimonial-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 30px 26px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+            position: relative;
+        }
+        .testimonial-card .quote-icon {
+            font-size: 2.4rem;
+            color: #f5e5e3;
+            position: absolute;
+            top: 20px;
+            right: 26px;
+        }
+        .testimonial-card .stars { color: #f0b94a; margin-bottom: 12px; font-size: 0.9rem; }
+        .testimonial-card p {
+            color: #5a4442;
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        .testimonial-card .reviewer { display: flex; align-items: center; gap: 12px; }
+        .testimonial-card .reviewer img {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .testimonial-card .reviewer h4 { font-weight: 600; font-size: 0.95rem; color: #3d2b2a; }
+        .testimonial-card .reviewer span { font-size: 0.8rem; color: #8a7270; }
+
+        /* ===== CONTACT ===== */
+        .contact-section { padding: 80px 0; background: #fffcf9; }
+        .contact-inner {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+        }
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #3d2b2a;
+            margin-bottom: 20px;
+        }
+        .contact-info .contact-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        .contact-info .contact-item .icon-box {
+            width: 46px;
+            height: 46px;
+            background: #faf0ee;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c27a74;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .contact-info .contact-item h4 {
+            font-weight: 600;
+            color: #3d2b2a;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+        .contact-info .contact-item p { color: #8a7270; font-size: 0.9rem; }
+
+        .contact-form {
+            background: #fff;
+            border-radius: 24px;
+            padding: 36px 32px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.07);
+            border: 1px solid #f5e5e3;
+        }
+        .contact-form h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #3d2b2a;
+            margin-bottom: 20px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid #f0dedd;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            margin-bottom: 14px;
+            transition: border 0.3s;
+            background: #fffcf9;
+            color: #2d2a2a;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus { outline: none; border-color: #c27a74; }
+        .contact-form textarea { height: 130px; resize: vertical; }
+        .contact-form button {
+            background: #c27a74;
+            color: #fff;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .contact-form button:hover { background: #a85f59; transform: translateY(-2px); }
+
+        /* ===== FOOTER ===== */
+        footer { background: #3d2b2a; color: #d4b3b0; padding: 60px 0 24px; }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 36px;
+            margin-bottom: 40px;
+        }
+        .footer-grid h4 {
+            font-family: 'Playfair Display', serif;
+            color: #fff;
+            font-size: 1.15rem;
+            margin-bottom: 16px;
+        }
+        .footer-grid p,
+        .footer-grid a {
+            color: #d4b3b0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 2;
+            display: block;
+            transition: color 0.3s;
+        }
+        .footer-grid a:hover { color: #e8b4b0; }
+        .footer-grid .social-icons { display: flex; gap: 12px; margin-top: 16px; }
+        .footer-grid .social-icons a {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e8b4b0;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        .footer-grid .social-icons a:hover {
+            background: #c27a74;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: #a88a86;
+        }
+
+        /* ===== CART SIDEBAR ===== */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 400px;
+            max-width: 90vw;
+            height: 100vh;
+            background: #fff;
+            box-shadow: -8px 0 40px rgba(0, 0, 0, 0.2);
+            padding: 28px 24px;
+            transition: right 0.4s ease;
+            z-index: 9999;
+            overflow-y: auto;
+        }
+        .cart-sidebar.open { right: 0; }
+        .cart-sidebar .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            float: right;
+            color: #3d2b2a;
+        }
+        .cart-sidebar h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            color: #3d2b2a;
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f5e5e3;
+            font-size: 0.9rem;
+        }
+        .cart-item .cart-item-info { flex: 1; }
+        .cart-item .cart-item-info strong { display: block; color: #3d2b2a; font-size: 0.9rem; }
+        .cart-item .cart-item-info span { color: #a85f59; font-weight: 600; }
+        .cart-item .remove-item {
+            background: none;
+            border: none;
+            color: #cc3333;
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 4px 8px;
+        }
+        .cart-total {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #3d2b2a;
+            margin: 20px 0;
+            padding-top: 16px;
+            border-top: 2px solid #3d2b2a;
+            display: flex;
+            justify-content: space-between;
+        }
+        .cart-sidebar .checkout-btn {
+            background: #c27a74;
+            color: #fff;
+            border: none;
+            padding: 14px 0;
+            width: 100%;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+        .cart-sidebar .checkout-btn:hover { background: #a85f59; }
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            display: none;
+            backdrop-filter: blur(4px);
+        }
+        .cart-overlay.open { display: block; }
+
+        .cart-payment {
+            margin: 16px 0;
+            padding: 16px;
+            background: #fdf3f1;
+            border-radius: 14px;
+            border: 1px solid #f5e5e3;
+        }
+        .cart-payment h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: #3d2b2a;
+            margin-bottom: 12px;
+        }
+        .cart-payment label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 10px;
+            margin-bottom: 6px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            color: #5a4442;
+            transition: background 0.3s;
+        }
+        .cart-payment label:hover { background: #fae8e6; }
+        .cart-payment input[type="radio"] { accent-color: #c27a74; width: 16px; height: 16px; }
+        .cart-payment .tax-note {
+            font-size: 0.75rem;
+            color: #a85f59;
+            margin-top: 8px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* ===== TOAST ===== */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            pointer-events: none;
+        }
+        .toast {
+            background: #fff;
+            border-left: 4px solid #25D366;
+            padding: 14px 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 280px;
+            max-width: 360px;
+            animation: slideIn 0.4s ease;
+            pointer-events: auto;
+        }
+        .toast.error { border-left-color: #cc3333; }
+        .toast.error i { color: #cc3333; }
+        @keyframes slideIn {
+            from { transform: translateX(120%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .toast.removing { animation: slideOut 0.4s ease forwards; }
+        @keyframes slideOut { to { transform: translateX(120%); opacity: 0; } }
+        .toast i { color: #25D366; font-size: 1.4rem; }
+        .toast .toast-content { flex: 1; }
+        .toast .toast-content strong { display: block; color: #3d2b2a; font-size: 0.9rem; }
+        .toast .toast-content span { color: #8a7270; font-size: 0.8rem; }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 58px;
+            height: 58px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+            z-index: 900;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero-inner, .booking-inner, .about-inner, .contact-inner {
+                grid-template-columns: 1fr;
+            }
+            .hero-image img { height: 400px; }
+            .about-images { order: -1; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fffcf9;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+            nav.open { display: block; }
+            nav ul { flex-direction: column; align-items: center; gap: 16px; }
+            .menu-toggle { display: block; }
+            .header-actions { gap: 10px; }
+            .btn-header-book { padding: 8px 16px; font-size: 0.75rem; }
+            .hero-text h1 { font-size: 2.2rem; }
+            .hero-image img { height: 320px; }
+            .hero-image .floating-badge { left: 10px; padding: 12px 18px; }
+            .section-title { font-size: 2rem; }
+            .booking-form .form-row { grid-template-columns: 1fr; }
+            .booking-form { padding: 32px 24px; }
+            .booking-text h2 { font-size: 2rem; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-grid .social-icons { justify-content: center; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+            .product-card .product-img { height: 140px; }
+            .hero-image .floating-badge { display: none; }
+            .toast-container { top: 80px; right: 12px; left: 12px; }
+            .toast { min-width: auto; max-width: 100%; }
+            .booking-form { padding: 28px 20px; }
+            .summary-modal { padding: 28px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== TAX BANNER ===== -->
+    <div class="tax-banner">
+        <i class="fas fa-info-circle"></i>
+        <strong>Sales Tax:</strong> 3% on Cash &amp; Bank Transfers &bull; 10% on Credit/Debit Cards
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                Cheri's <span>Salon</span>
+                <small>Beauty &amp; Elegance</small>
+            </div>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#" id="cartIcon" title="Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </a>
+                <a href="#booking" class="btn-header-book">
+                    <i class="fas fa-calendar-check"></i> Book Now
+                </a>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <span class="tagline">Where Beauty Meets Elegance</span>
+                <h1>Welcome to <span>Cheri's</span> Beauty Salon</h1>
+                <p>Experience luxury hair, skin, and beauty treatments crafted just for you. Our expert team ensures you leave feeling refreshed, confident, and absolutely glamorous.</p>
+                <div class="hero-buttons">
+                    <a href="#booking" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i> Book Appointment
+                    </a>
+                    <a href="#services" class="btn-secondary">
+                        <i class="fas fa-spa"></i> Our Services
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80" alt="Cheri's Beauty Salon Interior" />
+                <div class="floating-badge">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <h4>4.9 / 5.0</h4>
+                        <p>500+ Happy Clients</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <div class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item"><h3>10+</h3><p>Years Experience</p></div>
+            <div class="stat-item"><h3>5000+</h3><p>Happy Clients</p></div>
+            <div class="stat-item"><h3>15+</h3><p>Expert Staff</p></div>
+            <div class="stat-item"><h3>50+</h3><p>Services Offered</p></div>
+        </div>
+    </div>
+
+    <!-- ===== SERVICES ===== -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <h2 class="section-title">Our <span>Services</span></h2>
+            <p class="section-sub">All prices are clearly listed below. No hidden charges, no surprises.</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-cut"></i></div>
+                    <h3>Hair</h3>
+                    <div class="service-item"><span class="item-name">Hair Cut</span><span class="item-price">Rs. 1,200</span></div>
+                    <div class="service-item"><span class="item-name">Hair Color</span><span class="item-price">Rs. 3,500</span></div>
+                    <div class="service-item"><span class="item-name">Hair Straightening</span><span class="item-price">Rs. 4,000</span></div>
+                    <div class="service-item"><span class="item-name">Hair Styling</span><span class="item-price">Rs. 1,800</span></div>
+                    <div class="service-item"><span class="item-name">Hair Treatments</span><span class="item-price">Rs. 2,500</span></div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-spa"></i></div>
+                    <h3>Skin</h3>
+                    <div class="service-item"><span class="item-name">Facials &amp; Cleansing</span><span class="item-price">Rs. 2,500</span></div>
+                    <div class="service-item"><span class="item-name">Waxing</span><span class="item-price">Rs. 1,000</span></div>
+                    <div class="service-item"><span class="item-name">Face Wax</span><span class="item-price">Rs. 800</span></div>
+                    <div class="service-item"><span class="item-name">Face Threading</span><span class="item-price">Rs. 600</span></div>
+                    <div class="service-item"><span class="item-name">Massage</span><span class="item-price">Rs. 3,000</span></div>
+                    <div class="service-item"><span class="item-name">Laser Removal</span><span class="item-price">Rs. 5,000</span></div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-hand-sparkles"></i></div>
+                    <h3>Nails</h3>
+                    <div class="service-item"><span class="item-name">Mani / Pedi</span><span class="item-price">Rs. 1,500</span></div>
+                    <div class="service-item"><span class="item-name">Nail Colors</span><span class="item-price">Rs. 900</span></div>
+                    <div class="service-item"><span class="item-name">Nail Art</span><span class="item-price">Rs. 1,200</span></div>
+                    <div class="service-item"><span class="item-name">Gel Polish</span><span class="item-price">Rs. 1,800</span></div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3>Makeup</h3>
+                    <div class="service-item"><span class="item-name">Party Makeup</span><span class="item-price">Rs. 5,000</span></div>
+                    <div class="service-item"><span class="item-name">Bridal Makeup</span><span class="item-price">Rs. 15,000</span></div>
+                    <div class="service-item"><span class="item-name">Mehndi Services</span><span class="item-price">Rs. 3,000</span></div>
+                    <div class="service-item"><span class="item-name">Eyelash Extensions</span><span class="item-price">Rs. 2,200</span></div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-star"></i></div>
+                    <h3>Special Treatments</h3>
+                    <div class="service-item"><span class="item-name">Sea Foam Experience</span><span class="item-price">Rs. 3,800</span></div>
+                    <div class="service-item"><span class="item-name">Hydra Facial</span><span class="item-price">Rs. 6,500</span></div>
+                    <div class="service-item"><span class="item-name">Moroccan Bath</span><span class="item-price">Rs. 4,500</span></div>
+                </div>
+
+                <div class="service-card">
+                    <div class="card-icon"><i class="fas fa-crown"></i></div>
+                    <h3>Bridal Packages</h3>
+                    <div class="service-item"><span class="item-name">Basic Bridal Package</span><span class="item-price">Rs. 25,000</span></div>
+                    <div class="service-item"><span class="item-name">Premium Bridal Package</span><span class="item-price">Rs. 45,000</span></div>
+                    <div class="service-item"><span class="item-name">Full Wedding Package</span><span class="item-price">Rs. 75,000</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Our <span>Work</span></h2>
+            <p class="section-sub">A glimpse into the transformations we create every day.</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80" alt="Hair Styling" />
+                    <div class="overlay"><p>Hair Styling</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80" alt="Makeup Artistry" />
+                    <div class="overlay"><p>Makeup Artistry</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80" alt="Nail Art" />
+                    <div class="overlay"><p>Nail Art</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Facial Treatment" />
+                    <div class="overlay"><p>Facial Treatment</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=600&q=80" alt="Hair Color" />
+                    <div class="overlay"><p>Hair Color</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&q=80" alt="Bridal Makeup" />
+                    <div class="overlay"><p>Bridal Makeup</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=600&q=80" alt="Spa Treatment" />
+                    <div class="overlay"><p>Spa Treatment</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=600&q=80" alt="Hair Treatment" />
+                    <div class="overlay"><p>Hair Treatment</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SHOP ===== -->
+    <section class="shop-section" id="shop">
+        <div class="container">
+            <h2 class="section-title">Shop <span>Products</span></h2>
+            <p class="section-sub">Premium hair and beauty products available at our salon.</p>
+
+            <div class="filter-tabs">
+                <button class="active" data-filter="all">All Products</button>
+                <button data-filter="hair">Hair Care</button>
+                <button data-filter="skin">Skin Care</button>
+                <button data-filter="nails">Nails</button>
+            </div>
+
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+    </section>
+
+    <!-- ===== BOOKING ===== -->
+    <section class="booking-section" id="booking">
+        <div class="container booking-inner">
+            <div class="booking-text">
+                <h2>Book Your <span>Appointment</span></h2>
+                <p>Reserve your slot in just a few seconds. Fill out the form and our team will confirm your booking via WhatsApp.</p>
+                <ul class="booking-features">
+                    <li><i class="fas fa-check-circle"></i> Instant WhatsApp Confirmation</li>
+                    <li><i class="fas fa-check-circle"></i> Flexible Date &amp; Time Slots</li>
+                    <li><i class="fas fa-check-circle"></i> Choose Your Preferred Stylist</li>
+                    <li><i class="fas fa-check-circle"></i> Free Cancellation Policy</li>
+                </ul>
+
+                <div class="booking-contact">
+                    <i class="fas fa-phone-volume"></i>
+                    <div>
+                        <small>Need help? Call us</small>
+                        <strong>021-35854368</strong>
+                    </div>
+                </div>
+            </div>
+
+            <form class="booking-form" id="bookingForm">
+                <h3>Make a Reservation</h3>
+                <p class="form-intro">Fill in your details below</p>
+
+                <div class="field">
+                    <label>Full Name <span class="required">*</span></label>
+                    <input type="text" id="bookName" placeholder="e.g. Ayesha Khan" required />
+                </div>
+
+                <div class="form-row">
+                    <div class="field">
+                        <label>Phone <span class="required">*</span></label>
+                        <input type="tel" id="bookPhone" placeholder="03XX-XXXXXXX" required />
+                    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="email" id="bookEmail" placeholder="you@example.com" />
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Service Category <span class="required">*</span></label>
+                    <select id="bookCategory" required>
+                        <option value="">Choose a category</option>
+                        <option value="hair">Hair</option>
+                        <option value="skin">Skin</option>
+                        <option value="nails">Nails</option>
+                        <option value="makeup">Makeup</option>
+                        <option value="special">Special Treatments</option>
+                        <option value="bridal">Bridal Packages</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Select Service <span class="required">*</span></label>
+                    <select id="bookService" required disabled>
+                        <option value="">Select a category first</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Preferred Stylist</label>
+                    <select id="bookStylist">
+                        <option value="">No Preference</option>
+                        <option>George (Director &amp; Hairdresser)</option>
+                        <option>Bushra (Hair Stylist)</option>
+                        <option>Fadi (Hair Stylist)</option>
+                        <option>Elyatt (Hairdresser)</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="field">
+                        <label>Date <span class="required">*</span></label>
+                        <input type="date" id="bookDate" required />
+                    </div>
+                    <div class="field">
+                        <label>Time <span class="required">*</span></label>
+                        <select id="bookTime" required>
+                            <option value="">Select</option>
+                            <option>11:00 AM</option>
+                            <option>11:30 AM</option>
+                            <option>12:00 PM</option>
+                            <option>12:30 PM</option>
+                            <option>01:00 PM</option>
+                            <option>01:30 PM</option>
+                            <option>02:00 PM</option>
+                            <option>02:30 PM</option>
+                            <option>03:00 PM</option>
+                            <option>03:30 PM</option>
+                            <option>04:00 PM</option>
+                            <option>04:30 PM</option>
+                            <option>05:00 PM</option>
+                            <option>05:30 PM</option>
+                            <option>06:00 PM</option>
+                            <option>06:30 PM</option>
+                            <option>07:00 PM</option>
+                            <option>07:30 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Special Requests (Optional)</label>
+                    <textarea id="bookNotes" placeholder="Any notes for our team..."></textarea>
+                </div>
+
+                <button type="submit">
+                    <i class="fas fa-calendar-check"></i> Confirm Booking
+                </button>
+
+                <div class="form-message" id="bookingFeedback"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about-section" id="about">
+        <div class="container about-inner">
+            <div class="about-images">
+                <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80" alt="Salon Team" />
+                <img src="https://images.unsplash.com/photo-1470259078422-826894b933aa?w=600&q=80" alt="Salon Interior" />
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80" alt="Styling" />
+                <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=80" alt="Beauty Products" />
+            </div>
+
+            <div class="about-text">
+                <h2>About <span>Cheri's</span> Salon</h2>
+                <p>For over 10 years, Cheri's Beauty Salon has been the go-to destination for women and men who want to look and feel their best. Located in the heart of D.H.A Phase 6, Karachi, we combine world-class techniques with warm, personalized service.</p>
+                <p>Our team of expert stylists and beauticians is trained in the latest trends and techniques. From precision cuts and stunning balayage to luxurious facials and flawless bridal makeup, we do it all.</p>
+                <p>We use only premium products and maintain the highest standards of hygiene. Your comfort, safety, and satisfaction are our top priorities.</p>
+                <a href="#booking" class="btn-primary">
+                    <i class="fas fa-calendar-check"></i> Book Your Visit
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Our <span>Clients</span> Say</h2>
+            <p class="section-sub">Real reviews from real customers.</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Best salon in Karachi! My bridal makeup was absolutely stunning. The team was so professional and made me feel like a princess on my big day."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Ayesha" />
+                        <div>
+                            <h4>Ayesha Khan</h4>
+                            <span>Bridal Client</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"I have been coming here for 3 years. The hair color and styling are always perfect. Prices are transparent and staff is very friendly."</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Sara" />
+                        <div>
+                            <h4>Sara Ahmed</h4>
+                            <span>Regular Client</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-right quote-icon"></i>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"The Sea Foam Experience was heavenly. I felt so relaxed and my skin was glowing for days. Highly recommend this place!"</p>
+                    <div class="reviewer">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="Hina" />
+                        <div>
+                            <h4>Hina Malik</h4>
+                            <span>Spa Client</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get in <span>Touch</span></h2>
+            <p class="section-sub">We would love to hear from you.</p>
+
+            <div class="contact-inner">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-map-pin"></i></div>
+                        <div>
+                            <h4>Our Location</h4>
+                            <p>Shop 1-2, Big, Plot 22 Lane 7, behind Pizza Max, D.H.A Phase 6, Nishat Commercial Area, Karachi.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>021-35854368</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@cherisalon.pk</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h4>Opening Hours</h4>
+                            <p>Monday to Sunday: 11:00 AM – 8:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:20px;">
+                        <a href="https://wa.me/923000000000" class="btn-primary" style="display:inline-flex;">
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <h3>Send a Message</h3>
+                    <input type="text" id="contactName" placeholder="Your Full Name" required />
+                    <input type="email" id="contactEmail" placeholder="Your Email Address" required />
+                    <input type="tel" id="contactPhone" placeholder="Phone Number" />
+                    <textarea id="contactMessage" placeholder="Your Message..." required></textarea>
+                    <button type="submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                    <div class="form-message" id="contactFeedback"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>Cheri's Salon</h4>
+                    <p>Where beauty meets elegance. Experience luxury hair, skin, and beauty treatments crafted just for you in the heart of Karachi.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#shop">Shop</a>
+                    <a href="#booking">Booking</a>
+                </div>
+
+                <div>
+                    <h4>Services</h4>
+                    <a href="#services">Hair Cut</a>
+                    <a href="#services">Hair Color</a>
+                    <a href="#services">Facials</a>
+                    <a href="#services">Mani / Pedi</a>
+                    <a href="#services">Bridal Makeup</a>
+                </div>
+
+                <div>
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-map-pin" style="margin-right:8px;"></i> D.H.A Phase 6, Karachi</p>
+                    <p><i class="fas fa-phone" style="margin-right:8px;"></i> 021-35854368</p>
+                    <p><i class="fas fa-envelope" style="margin-right:8px;"></i> info@cherisalon.pk</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Cheri's Beauty Salon. All rights reserved. | Designed with <i class="fas fa-heart" style="color:#c27a74;"></i> by DABBS Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== WHATSAPP FLOAT ===== -->
+    <a href="https://wa.me/923000000000" class="whatsapp-float" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ===== CART SIDEBAR ===== -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        <h3>Your Cart</h3>
+        <div id="cartItemsList">
+            <p style="color:#8a7270; font-size:0.9rem;">Your cart is empty.</p>
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotalAmount">Rs. 0</span>
+        </div>
+
+        <div class="cart-payment" id="cartPayment" style="display:none;">
+            <h4>Select Payment Method</h4>
+            <label>
+                <input type="radio" name="payment" value="cod" checked />
+                Cash on Delivery
+            </label>
+            <label>
+                <input type="radio" name="payment" value="bank" />
+                Bank Transfer
+            </label>
+            <label>
+                <input type="radio" name="payment" value="card" />
+                Credit / Debit Card
+            </label>
+            <p class="tax-note">
+                <i class="fas fa-info-circle"></i>
+                Sales Tax: 3% on Cash &amp; Bank Transfers &bull; 10% on Credit/Debit Cards
+            </p>
+        </div>
+
+        <button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+
+    <!-- ===== BOOKING SUMMARY MODAL ===== -->
+    <div class="summary-modal-overlay" id="summaryModal">
+        <div class="summary-modal">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>Booking Confirmed!</h3>
+            <p class="summary-sub">Your appointment has been received. We will confirm via WhatsApp shortly.</p>
+
+            <div class="summary-details" id="summaryDetails"></div>
+
+            <button class="close-modal-btn" onclick="closeSummaryModal()">
+                <i class="fas fa-thumbs-up"></i> Done
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== TOAST CONTAINER ===== -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== PRODUCTS DATA =====
+        const products = [
+            { name: 'Argan Oil Hair Serum 100ml', brand: 'Hair Care', category: 'hair', price: 1500, img: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=400&q=80' },
+            { name: 'Keratin Repair Shampoo 300ml', brand: 'Hair Care', category: 'hair', price: 2200, img: 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=400&q=80' },
+            { name: 'Hair Mask Deep Conditioning', brand: 'Hair Care', category: 'hair', price: 2800, img: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80' },
+            { name: 'Vitamin C Face Serum', brand: 'Skin Care', category: 'skin', price: 3200, img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80' },
+            { name: 'Hydrating Face Cream', brand: 'Skin Care', category: 'skin', price: 2500, img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&q=80' },
+            { name: 'Sunscreen SPF 50', brand: 'Skin Care', category: 'skin', price: 1800, img: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80' },
+            { name: 'Nail Polish Set (6 colors)', brand: 'Nails', category: 'nails', price: 1600, img: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=80' },
+            { name: 'Cuticle Oil 15ml', brand: 'Nails', category: 'nails', price: 900, img: 'https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=400&q=80' },
+        ];
+
+        // ===== SERVICES DATA =====
+        const servicesByCategory = {
+            hair: [
+                { name: 'Hair Cut', price: 1200 },
+                { name: 'Hair Color', price: 3500 },
+                { name: 'Hair Straightening', price: 4000 },
+                { name: 'Hair Styling', price: 1800 },
+                { name: 'Hair Treatments', price: 2500 },
+            ],
+            skin: [
+                { name: 'Facials & Cleansing', price: 2500 },
+                { name: 'Waxing', price: 1000 },
+                { name: 'Face Wax', price: 800 },
+                { name: 'Face Threading', price: 600 },
+                { name: 'Massage', price: 3000 },
+                { name: 'Laser Removal', price: 5000 },
+            ],
+            nails: [
+                { name: 'Mani / Pedi', price: 1500 },
+                { name: 'Nail Colors', price: 900 },
+                { name: 'Nail Art', price: 1200 },
+                { name: 'Gel Polish', price: 1800 },
+            ],
+            makeup: [
+                { name: 'Party Makeup', price: 5000 },
+                { name: 'Bridal Makeup', price: 15000 },
+                { name: 'Mehndi Services', price: 3000 },
+                { name: 'Eyelash Extensions', price: 2200 },
+            ],
+            special: [
+                { name: 'Sea Foam Experience', price: 3800 },
+                { name: 'Hydra Facial', price: 6500 },
+                { name: 'Moroccan Bath', price: 4500 },
+            ],
+            bridal: [
+                { name: 'Basic Bridal Package', price: 25000 },
+                { name: 'Premium Bridal Package', price: 45000 },
+                { name: 'Full Wedding Package', price: 75000 },
+            ]
+        };
+
+        // ===== CART =====
+        let cart = [];
+
+        // ===== TOAST =====
+        function showToast(title, message, isError = false) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast' + (isError ? ' error' : '');
+            toast.innerHTML = `
+                <i class="fas ${isError ? 'fa-exclamation-circle' : 'fa-check-circle'}"></i>
+                <div class="toast-content">
+                    <strong>${title}</strong>
+                    <span>${message}</span>
+                </div>
+            `;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('removing');
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+
+        // ===== CART UI =====
+        function updateCartUI() {
+            const list = document.getElementById('cartItemsList');
+            const totalEl = document.getElementById('cartTotalAmount');
+            const badge = document.getElementById('cartBadge');
+            const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+            const totalPrice = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+            if (totalItems > 0) {
+                badge.textContent = totalItems > 99 ? '99+' : totalItems;
+                badge.classList.add('show');
+            } else {
+                badge.classList.remove('show');
+            }
+
+            if (cart.length === 0) {
+                list.innerHTML = '<p style="color:#8a7270; font-size:0.9rem;">Your cart is empty.</p>';
+                totalEl.textContent = 'Rs. 0';
+                document.getElementById('cartPayment').style.display = 'none';
+                return;
+            }
+
+            list.innerHTML = cart.map((item, idx) => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <strong>${item.name}</strong>
+                        <span>Rs. ${item.price.toLocaleString()} x ${item.qty}</span>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${idx})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            totalEl.textContent = 'Rs. ' + totalPrice.toLocaleString();
+        }
+
+        function addToCart(name, price) {
+            const existing = cart.find(i => i.name === name);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            updateCartUI();
+            showToast('Added to Cart', `${name} has been added successfully.`);
+        }
+
+        function removeFromCart(idx) {
+            const removedName = cart[idx].name;
+            cart.splice(idx, 1);
+            updateCartUI();
+            showToast('Item Removed', `${removedName} has been removed.`);
+        }
+
+        // ===== RENDER PRODUCTS =====
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('productGrid');
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="${p.img}" alt="${p.name}" loading="lazy" />
+                    </div>
+                    <div class="product-body">
+                        <div>
+                            <div class="product-brand">${p.brand}</div>
+                            <div class="product-name">${p.name}</div>
+                        </div>
+                        <div>
+                            <div class="product-price">Rs. ${p.price.toLocaleString()}</div>
+                            <button class="btn-add-cart" onclick="addToCart('${p.name.replace(/'/g, "\\'")}', ${p.price})">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ===== FILTER TABS =====
+        document.querySelectorAll('.filter-tabs button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-tabs button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderProducts(this.dataset.filter);
+            });
+        });
+
+        // ===== CART TOGGLE =====
+        document.getElementById('cartIcon').addEventListener('click', function(e) {
+            e.preventDefault();
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('cartOverlay');
+            const payment = document.getElementById('cartPayment');
+
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+
+            if (sidebar.classList.contains('open')) {
+                payment.style.display = cart.length > 0 ? 'block' : 'none';
+            }
+        });
+
+        document.getElementById('closeCart').addEventListener('click', function() {
+            document.getElementById('cartSidebar').classList.remove('open');
+            document.getElementById('cartOverlay').classList.remove('open');
+        });
+
+        document.getElementById('cartOverlay').addEventListener('click', function() {
+            document.getElementById('cartSidebar').classList.remove('open');
+            document.getElementById('cartOverlay').classList.remove('open');
+        });
+
+        document.getElementById('checkoutBtn').addEventListener('click', function() {
+            if (cart.length === 0) {
+                showToast('Cart is Empty', 'Please add some products before checkout.', true);
+                return;
+            }
+
+            const payment = document.querySelector('input[name="payment"]:checked');
+            const paymentMethod = payment ? payment.value : 'cod';
+            const methodNames = { cod: 'Cash on Delivery', bank: 'Bank Transfer', card: 'Credit / Debit Card' };
+            const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+            const totalPrice = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+            showToast(
+                'Order Confirmed!',
+                `Order #${Math.floor(Math.random() * 90000) + 10000} for ${totalItems} item(s) via ${methodNames[paymentMethod]}. Total: Rs. ${totalPrice.toLocaleString()}`
+            );
+
+            cart = [];
+            updateCartUI();
+            document.getElementById('cartSidebar').classList.remove('open');
+            document.getElementById('cartOverlay').classList.remove('open');
+            document.getElementById('cartPayment').style.display = 'none';
+        });
+
+        // ===== MOBILE MENU =====
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+
+        // ===== BOOKING: CATEGORY -> SERVICE =====
+        const categorySelect = document.getElementById('bookCategory');
+        const serviceSelect = document.getElementById('bookService');
+
+        categorySelect.addEventListener('change', function() {
+            const category = this.value;
+            serviceSelect.innerHTML = '';
+
+            if (!category) {
+                serviceSelect.innerHTML = '<option value="">Select a category first</option>';
+                serviceSelect.disabled = true;
+                return;
+            }
+
+            serviceSelect.disabled = false;
+            serviceSelect.innerHTML = '<option value="">Choose a service</option>';
+
+            servicesByCategory[category].forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.name;
+                opt.dataset.price = s.price;
+                opt.textContent = `${s.name} — Rs. ${s.price.toLocaleString()}`;
+                serviceSelect.appendChild(opt);
+            });
+        });
+
+        // ===== BOOKING SUBMIT =====
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('bookName').value.trim();
+            const phone = document.getElementById('bookPhone').value.trim();
+            const email = document.getElementById('bookEmail').value.trim();
+            const category = document.getElementById('bookCategory').value;
+            const serviceEl = document.getElementById('bookService');
+            const service = serviceEl.value;
+            const stylist = document.getElementById('bookStylist').value || 'No Preference';
+            const date = document.getElementById('bookDate').value;
+            const time = document.getElementById('bookTime').value;
+            const notes = document.getElementById('bookNotes').value.trim();
+            const feedback = document.getElementById('bookingFeedback');
+
+            if (!name || !phone || !category || !service || !date || !time) {
+                feedback.textContent = 'Please fill all required fields marked with *';
+                feedback.className = 'form-message error';
+                return;
+            }
+
+            const selectedOption = serviceEl.options[serviceEl.selectedIndex];
+            const servicePrice = selectedOption.dataset.price ? parseInt(selectedOption.dataset.price) : 0;
+            const bookingId = 'CHB-' + Math.floor(Math.random() * 90000 + 10000);
+
+            const summary = document.getElementById('summaryDetails');
+            summary.innerHTML = `
+                <div class="summary-row">
+                    <span class="label">Booking ID</span>
+                    <span class="value highlight">${bookingId}</span>
+                </div>
+                <div class="summary-row">
+                    <span class="label">Name</span>
+                    <span class="value">${name}</span>
+                </div>
+                <div class="summary-row">
+                    <span class="label">Phone</span>
+                    <span class="value">${phone}</span>
+                </div>
+                <div class="summary-row">
+                    <span class="label">Service</span>
+                    <span class="value">${service}</span>
+                </div>
+                <div class="summary-row">
+                    <span class="label">Price</span>
+                    <span class="value highlight">Rs. ${servicePrice.toLocaleString()}</span>
+                </div>
+                <div class="summary-row">
+                    <span class="label">Stylist</span>
+                    <span class="value">${stylist}</span>
+                </div>
+                <div class="summary-row">
+                    <span class="label">Date &amp; Time</span>
+                    <span class="value">${date} at ${time}</span>
+                </div>
+            `;
+
+            document.getElementById('summaryModal').classList.add('open');
+            showToast('Booking Received!', `Your appointment for ${service} is pending confirmation.`);
+
+            feedback.textContent = '';
+            feedback.className = 'form-message';
+            this.reset();
+            serviceSelect.innerHTML = '<option value="">Select a category first</option>';
+            serviceSelect.disabled = true;
+        });
+
+        function closeSummaryModal() {
+            document.getElementById('summaryModal').classList.remove('open');
+        }
+
+        document.getElementById('summaryModal').addEventListener('click', function(e) {
+            if (e.target === this) closeSummaryModal();
+        });
+
+        // ===== CONTACT FORM =====
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const message = document.getElementById('contactMessage').value.trim();
+            const feedback = document.getElementById('contactFeedback');
+
+            if (!name || !email || !message) {
+                feedback.textContent = 'Please fill in all required fields.';
+                feedback.className = 'form-message error';
+                return;
+            }
+
+            if (!email.includes('@') || !email.includes('.')) {
+                feedback.textContent = 'Please enter a valid email address.';
+                feedback.className = 'form-message error';
+                return;
+            }
+
+            feedback.textContent = 'Thank you! Your message has been sent. We will get back to you soon.';
+            feedback.className = 'form-message success';
+
+            showToast('Message Sent!', 'We will get back to you soon.');
+            this.reset();
+        });
+
+        // ===== INIT =====
+        renderProducts();
+        updateCartUI();
+    </script>
+
+</body>
+</html>
